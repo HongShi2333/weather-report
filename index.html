@@ -405,17 +405,25 @@
 
     <script>
         const weatherIcons = {
-            113: 'https://openweathermap.org/img/wn/01d.png',
-            116: 'https://openweathermap.org/img/wn/02d.png',
-            119: 'https://openweathermap.org/img/wn/03d.png',
-            122: 'https://openweathermap.org/img/wn/04d.png',
-            176: 'https://openweathermap.org/img/wn/09d.png',
-            200: 'https://openweathermap.org/img/wn/11d.png',
-            263: 'https://openweathermap.org/img/wn/09d.png',
-            296: 'https://openweathermap.org/img/wn/10d.png',
-            305: 'https://openweathermap.org/img/wn/10d.png',
-            353: 'https://openweathermap.org/img/wn/09d.png',
-            'default': 'https://openweathermap.org/img/wn/50d.png'
+            '01d': 'https://openweathermap.org/img/wn/01d.png', // 晴天
+            '01n': 'https://openweathermap.org/img/wn/01n.png', // 晴夜
+            '02d': 'https://openweathermap.org/img/wn/02d.png', // 少云
+            '02n': 'https://openweathermap.org/img/wn/02n.png',
+            '03d': 'https://openweathermap.org/img/wn/03d.png', // 散云
+            '03n': 'https://openweathermap.org/img/wn/03n.png',
+            '04d': 'https://openweathermap.org/img/wn/04d.png', // 多云
+            '04n': 'https://openweathermap.org/img/wn/04n.png',
+            '09d': 'https://openweathermap.org/img/wn/09d.png', // 阵雨
+            '09n': 'https://openweathermap.org/img/wn/09n.png',
+            '10d': 'https://openweathermap.org/img/wn/10d.png', // 雨
+            '10n': 'https://openweathermap.org/img/wn/10n.png',
+            '11d': 'https://openweathermap.org/img/wn/11d.png', // 雷暴
+            '11n': 'https://openweathermap.org/img/wn/11n.png',
+            '13d': 'https://openweathermap.org/img/wn/13d.png', // 雪
+            '13n': 'https://openweathermap.org/img/wn/13n.png',
+            '50d': 'https://openweathermap.org/img/wn/50d.png', // 雾
+            '50n': 'https://openweathermap.org/img/wn/50n.png',
+            'default': 'https://openweathermap.org/img/wn/50d.png' // 默认
         };
 
         function getTemperatureAssessment(temp) {
@@ -443,7 +451,7 @@
         }
 
         function getDates() {
-            const today = new Date('2025-07-17T19:00:00+10:00');
+            const today = new Date(); // 使用当前日期
             const dates = [];
             for (let i = 0; i < 3; i++) {
                 const date = new Date(today);
@@ -492,9 +500,9 @@
 
         function setBackground(weatherCode) {
             const container = document.getElementById('container');
-            if ([113, 116].includes(parseInt(weatherCode))) {
+            if (['01d', '01n', '02d', '02n'].includes(weatherCode)) {
                 container.className = 'container sunny';
-            } else if ([119, 122].includes(parseInt(weatherCode))) {
+            } else if (['03d', '03n', '04d', '04n'].includes(weatherCode)) {
                 container.className = 'container cloudy';
             } else {
                 container.className = 'container rainy';
